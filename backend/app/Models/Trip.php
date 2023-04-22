@@ -12,6 +12,13 @@ class Trip extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'origin' => 'array',
+        'destination' => 'array',
+        'is_started' => 'boolean',
+        'is_complete' => 'boolean'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
