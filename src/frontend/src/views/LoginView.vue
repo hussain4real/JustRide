@@ -9,7 +9,13 @@ const credentials = reactive({
 
 const handleLogin = () => {
 	axios
-		.post('http://localhost/api/login', credentials)
+		.post('http://localhost:90/api/login', {
+			phone: credentials.phone
+				.replaceAll(' ', '')
+				.replace('(', '')
+				.replace(')', '')
+				.replace('-', ''),
+		})
 		.then((response) => {
 			console.log(response.data);
 		})
